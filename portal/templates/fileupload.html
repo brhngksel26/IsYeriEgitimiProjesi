@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>Kullanıcı Bilgileri</title>
+</head>
+
+<body>
+    <div class="row">
+		<div class="col-md-3">
+			<div class="card card-body" id="total-orders">
+			  	
+			</div>
+        </div>
+        <div class="col-md-9">
+			<div class="card card-body" id="total-orders">
+                <form method="POST" action=""  class="post-form" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div class="p-t-30">
+                        <div class="control-group">
+                            <label class="control-label" for="basicinput">Başlık</label>
+                            <div class="controls">
+                                <input type="text" id="basicinput" name="title" placeholder="Type something here..." class="span8">
+                            </div>
+                        </div>
+                        
+                        
+                        <div class="controls">
+                            <textarea name="description" class="span8" rows="5"></textarea>
+                        </div>
+
+
+                        <input type="file" name="petition">
+                        
+                        
+                        <div class="control-group">
+                            <label class="control-label">durum</label>
+                            <div class="controls">
+                                <label class="radio inline">
+                                    <input type="radio" name="finished" id="optionsRadios1" value="False" checked="">
+                                    Bitmedi
+                                </label> 
+                                <label class="radio inline">
+                                    <input type="radio" name="finished" id="optionsRadios2" value="True">
+                                    Bitti
+                                </label> 
+                            </div>
+                        </div>
+                    </div>
+                    
+                    
+                    <div class="p-t-30">
+                        <button type="submit">Kaydet</button>
+                    </div>
+                </form>
+			  	
+			</div>
+		</div>
+    </div>
+    
+
+</html>

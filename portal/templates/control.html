@@ -1,0 +1,103 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+    <head>
+        <title>Title</title>
+        <style type="text/css">
+      
+            body {
+                font-weight: 200;
+                font-size: 14px;
+            }
+            .header {
+                font-size: 20px;
+                font-weight: 100;
+                text-align: center;
+                color: #007cae;
+            }
+            .title {
+                font-size: 22px;
+                font-weight: 100;
+               /* text-align: right;*/
+               padding: 10px 20px 0px 20px;  
+            }
+            .title span {
+                color: #007cae;
+            }
+            .details {
+                padding: 10px 20px 0px 20px;
+                text-align: left !important;
+                /*margin-left: 40%;*/
+            }
+            .hrItem {
+                border: none;
+                height: 1px;
+                /* Set the hr color */
+                color: #333; /* old IE */
+                background-color: #fff; /* Modern Browsers */
+            }
+            
+        </style>
+    </head>
+    <body>
+        <h1>Kontrol SAYSASI</h1>
+        <h2>Dilekçenizi kontrol edin ve onaylayın</h2>
+        <form action="pdf/example" method="POST">
+            {% csrf_token %}
+
+            <table border="3" bordercolor="#800000">
+                <tr>
+         <td colspan="2">
+                        <div style="text-align: center;height: 120px;line-height: 120px;width: 120px;border: 1px solid;float: right;">FOTOĞRAF</div>
+                    </td>
+         </tr>
+         <tr>
+         <td>Adı Soyadı*</td>
+         <td>{{name}}
+                       
+                    </td>
+         </tr>
+                <tr>
+         <td>Doğum Tarihi *</td>
+         <td>{{birthday}}</td>
+         </tr>          
+        <tr>
+         <td>Cinsiyet *</td>
+         <td>{{gender}}</td>
+         </tr>
+         <tr>
+         <td>E-Posta Adresi *</td>
+         <td>{{email}}        </td>
+         </tr>       
+         <tr>
+         <td>Telefon *</td>
+         <td>{{phonenumber}}</td>
+         </tr>        
+        <tr>
+         <td>Mezuniyet Durumu *</td>
+         <td>{{graduation}}</td>
+         </tr> 
+                <tr>
+         <td>İngilizce Seviyeniz *</td>
+         <td>{{language_level}}</td>
+         </tr> 
+                <tr>
+         <td>Çalışmak İstediğiniz Pozisyon</td>
+         <td>{{position}} </td>
+         </tr> 
+                <tr>
+         <td>Askerlik Durumu</td>
+         <td>{{military_status}}</td>
+         </tr> 
+                <tr>
+         <td>Ek Bilgi</td>
+         <td>{{description}}</td>
+         </tr>
+                <tr>
+         <td colspan="2">
+                        <input type="submit" value="BAŞVUR"/>
+                    </td>
+         </tr>       
+         </table>
+        </form>
+    </body>
+</html>
