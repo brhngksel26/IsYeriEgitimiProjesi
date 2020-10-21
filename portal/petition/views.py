@@ -233,9 +233,9 @@ def petition(request):
         email = request.POST["email"]
         department = request.POST["department"]
         passport = request.FILES["passport"]
-        graduation_document = request.POST["graduation_document"]
-        transcript = request.POST["transcript"]
-        language_document = request.POST["language_document"]
+        graduation_document = request.FILES["graduation_document"]
+        transcript = request.FILES["transcript"]
+        language_document = request.FILES["language_document"]
         description = request.POST["description"]
         document = ForeignStudentApplicationForm.object.create(
             user=ogrenci,
