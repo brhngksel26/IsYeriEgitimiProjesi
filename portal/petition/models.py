@@ -59,6 +59,7 @@ class ForeignStudentApplicationForm(models.Model):
     transcript = models.FileField()
     description = models.TextField(max_length=1000,blank=True)
     status = models.CharField(max_length=100,null=True,choices=STATUS, default=STATUS[0][0])
+    date = models.DateTimeField(default=datetime.now ,blank=True )
 
     object = models.Manager()
 

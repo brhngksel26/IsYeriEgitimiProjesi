@@ -21,7 +21,7 @@ urlpatterns = [
     path('ensitu/',views.ensitu,name="ensitu"),
     path('logout/',views.logoutUser,name="logout"),
     path('ogrenci/',views.ogrenci,name="ogrenci"),
-    path('petitionshow/',views.petitionShow,name="petitionShow"),
+    path('petitionshow/<id>',views.petitionShow,name="petitionShow"),
     path('petition/',views.petition,name="petition"),
 
 

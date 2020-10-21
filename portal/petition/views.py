@@ -160,7 +160,7 @@ def logoutUser(request):
 
 
 @login_required(login_url='login')
-#@allowed_users(allowed_roles=['ogrenci'])
+@allowed_users(allowed_roles=['ogrenci'])
 def uploadfile(request):
     ogrenci = request.user.student
 
@@ -199,15 +199,14 @@ def ensitu(request):
     return render(request,'ensitu.html')
 
 def danisman(request):
-    category = 'Advisor'
-    petition = Petition.object.filter(category=category)
-    print(petition.data)
+    status = "Process"
+    petition = ForeignStudentApplicationForm.object.filter(status=status)
     return render(request,'danisman.html',{'categoryies':petition})
 
 def ogrenci(request):
     return render(request,'ogrenci.html')
 
-def petitionShow(request):
+def petitionShow(request,id):
     return render(request,'petition_show.html')
 
 
