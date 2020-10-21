@@ -141,7 +141,7 @@
                                                 </td>
                                             </tr>
                                             {% for category in categoryies %}
-                                            <tr class="unread" href="{% url 'petitionShow' %}">
+                                            <tr class="unread" >
                                                 
                                                 <td class="cell-author hidden-phone hidden-tablet">
                                                     {{category.user}}
@@ -155,7 +155,7 @@
                                                 <td class="cell-author hidden-phone hidden-tablet">
                                                     {{category.status}}
                                                 </td>
-                                                <td class="cell-author hidden-phone hidden-tablet" href="{% url 'petitionShow' category.id %}">
+                                                <td class="cell-author hidden-phone hidden-tablet" >
                                                     <a class="btn btn-warning" href="{% url 'petitionShow' category.id %}" role="button"></a>
                                                 </td>
                                             </tr>

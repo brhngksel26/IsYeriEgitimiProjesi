@@ -1,124 +1,300 @@
-<!DOCTYPE html>
-<html lang="en">
-    {% load static %}
+<!doctype html>
+{% load static %}
 
-<head>
-    <head>
-        <head>
-            <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-            <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <title>Danisman</title>
-            <link type="text/css" href="{% static 'bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
-            <link type="text/css" href="{% static 'bootstrap/css/bootstrap-responsive.min.css' %}" rel="stylesheet">
-            <link type="text/css" href="{% static 'css/theme.css' %}" rel="stylesheet">
-            <link type="text/css" href="{% static 'images/icons/css/font-awesome.css' %}" rel="stylesheet">
-            <link type="text/css" href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600'
-                rel='stylesheet'>
-        </head>
-    </head>
-    <body>
-        <div class="navbar navbar-fixed-top">
-            <div class="navbar-inner">
-                <div class="container">
-                    <a class="btn btn-navbar" data-toggle="collapse" data-target=".navbar-inverse-collapse">
-                        <i class="icon-reorder shaded"></i></a><a class="brand" href="index.html"><img src="{% static 'images/firat.png' %}" alt="Girl in a jacket" width="80" height="90"> </a>
-                    <div class="nav-collapse collapse navbar-inverse-collapse">
-                        <ul class="nav nav-icons">
-                            <li class="active"><a href="#"><i class="icon-envelope"></i></a></li>
-                            <li><a href="#"><i class="icon-eye-open"></i></a></li>
-                            <li><a href="#"><i class="icon-bar-chart"></i></a></li>
-                        </ul>
-                        <form class="navbar-search pull-left input-append" action="#">
-                        <input type="text" class="span3">
-                        <button class="btn" type="button">
-                            <i class="icon-search"></i>
-                        </button>
-                        </form>
-                        <ul class="nav pull-right">
-                            <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown
-                                <b class="caret"></b></a>
-                                <ul class="dropdown-menu">
-                                    <li><a href="#">Item No. 1</a></li>
-                                    <li><a href="#">Don't Click</a></li>
-                                    <li class="divider"></li>
-                                    <li class="nav-header">Example Header</li>
-                                    <li><a href="#">A Separated link</a></li>
-                                </ul>
-                            </li>
-                            <li><a href="#">Support </a></li>
-                            <li class="nav-user dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                <img src="images/user.png" class="nav-avatar" />
-                                <b class="caret"></b></a>
-                                <ul class="dropdown-menu">
-                                    <li><a href="#">Your Profile</a></li>
-                                    <li><a href="#">Edit Profile</a></li>
-                                    <li><a href="#">Account Settings</a></li>
-                                    <li class="divider"></li>
-                                    <li><a href="#">Logout</a></li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </div>
-                    <!-- /.nav-collapse -->
-                </div>
+                        <html>
+                            <head>
+                                <meta charset='utf-8'>
+                                <meta name='viewport' content='width=device-width, initial-scale=1'>
+                                <title>Foreign Student Application Form</title>
+                                <link href='https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css' rel='stylesheet'>
+                                <link href='' rel='stylesheet'>
+                                <style>.card-0 {
+    min-height: 110vh;
+    background: linear-gradient(-20deg, rgb(255, 255, 255) 50%, #8C0303 50%);
+    color: white;
+    border: 0px
+}
+
+p {
+    font-size: 15px;
+    line-height: 25px !important;
+    font-weight: 500
+}
+
+.container {
+    padding-top: 100px !important;
+    border-radius: 20px
+}
+
+.btn {
+    letter-spacing: 1px
+}
+
+select:active {
+    box-shadow: none !important;
+    outline-width: 0 !important
+}
+
+select:after {
+    box-shadow: none !important;
+    outline-width: 0 !important
+}
+
+input,
+textarea {
+    padding: 10px 12px 10px 12px;
+    border: 1px solid lightgrey;
+    border-radius: 0px !important;
+    margin-bottom: 5px;
+    margin-top: 2px;
+    width: 100%;
+    box-sizing: border-box;
+    color: #2C3E50;
+    font-size: 14px;
+    letter-spacing: 1px;
+    resize: none
+}
+
+select:focus,
+input:focus {
+    box-shadow: none !important;
+    border: 1px solid #8C0303 !important;
+    outline-width: 0 !important;
+    font-weight: 400
+}
+
+label {
+    margin-bottom: 2px;
+    font-weight: bolder;
+    font-size: 14px
+}
+
+input:focus,
+textarea:focus {
+    -moz-box-shadow: none !important;
+    -webkit-box-shadow: none !important;
+    box-shadow: none !important;
+    border: 1px solid #8C0303;
+    outline-width: 0
+}
+
+button:focus {
+    -moz-box-shadow: none !important;
+    -webkit-box-shadow: none !important;
+    box-shadow: none !important;
+    outline-width: 0
+}
+
+.form-control {
+    height: calc(2em + .75rem + 3px)
+}
+
+.inner-card {
+    margin: 79px 0px 70px 0px
+}
+
+.card-0 {
+    margin-top: 100px;
+    margin-bottom: 100px
+}
+
+.card-1 {
+    border-radius: 17px;
+    color: black;
+    box-shadow: 2px 4px 15px 0px rgb(0, 0, 0, 0.5) !important
+}
+
+#file {
+    border: 2px dashed #92b0b3 !important
+}
+#file1 {
+    border: 2px dashed #92b0b3 !important
+}
+#file2 {
+    border: 2px dashed #92b0b3 !important
+}
+#file3 {
+    border: 2px dashed #92b0b3 !important
+}
+
+.color input {
+    background-color: #f1f1f1
+}
+
+.files:before {
+    position: absolute;
+    bottom: 60px;
+    left: 0;
+    width: 100%;
+    content: attr(data-before);
+    color: #000;
+    font-size: 12px;
+    font-weight: 600;
+    text-align: center
+}
+.files1:before {
+    position: absolute;
+    bottom: 60px;
+    left: 0;
+    width: 100%;
+    content: attr(data-before1);
+    color: #000;
+    font-size: 12px;
+    font-weight: 600;
+    text-align: center
+}
+.files2:before {
+    position: absolute;
+    bottom: 60px;
+    left: 0;
+    width: 100%;
+    content: attr(data-before2);
+    color: #000;
+    font-size: 12px;
+    font-weight: 600;
+    text-align: center
+}
+.files3:before {
+    position: absolute;
+    bottom: 60px;
+    left: 0;
+    width: 100%;
+    content: attr(data-before3);
+    color: #000;
+    font-size: 12px;
+    font-weight: 600;
+    text-align: center
+}
+
+#file {
+    display: inline-block;
+    width: 100%;
+    padding: 95px 0 0 100%;
+    background: url('https://i.imgur.com/VXWKoBD.png') top center no-repeat #fff;
+    background-size: 55px 55px
+}
+#file1 {
+    display: inline-block;
+    width: 100%;
+    padding: 95px 0 0 100%;
+    background: url('https://i.imgur.com/VXWKoBD.png') top center no-repeat #fff;
+    background-size: 55px 55px
+}
+#file2 {
+    display: inline-block;
+    width: 100%;
+    padding: 95px 0 0 100%;
+    background: url('https://i.imgur.com/VXWKoBD.png') top center no-repeat #fff;
+    background-size: 55px 55px
+}
+#file3 {
+    display: inline-block;
+    width: 100%;
+    padding: 95px 0 0 100%;
+    background: url('https://i.imgur.com/VXWKoBD.png') top center no-repeat #fff;
+    background-size: 55px 55px
+}
+</style>
+                                <script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
+                                <script type='text/javascript' src='https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js'></script>
+                                <script type='text/javascript' src='https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js'></script>
+                                <script type='text/javascript'>
+                                $(document).ready(function(){
+$(".files").attr('data-before',"Drag file here or click the above button");
+$('input[type="file"]').change(function(e){
+var fileName = e.target.files[0].name;
+$(".files").attr('data-before',fileName);
+
+
+
+
+
+});
+});</script>
+                                <script type='text/javascript'>
+                                $(document).ready(function(){
+$(".files2").attr('data-before2',"2Drag file here or click the above button");
+$('input[type="file"]').change(function(e2){
+var fileName2 = e2.target.files2[0].name;
+$(".files2").attr('data-before2',fileName2);
+
+
+
+
+
+});
+});</script>
+                            </head>
+                            <body oncontextmenu='return false' class='snippet-body'>
+                            <div class="container card-0 justify-content-center ">
+                            </head>
+                            <body oncontextmenu='return false' class='snippet-body'>
+                            <div class="container card-0 justify-content-center ">
+    <div class="card-body px-sm-4 px-0">
+        <div class="row justify-content-center mb-5">
+            <div class="col-md-10 col">
+                <h3 class="font-weight-bold ml-md-0 mx-auto text-center text-sm-left"> Foreign Student Application Form</h3>
+                <p class="mt-md-4 ml-md-0 ml-2 text-center text-sm-left">Please fill in required fields below.</p>
+                <p class="mt-md-4 ml-md-0 ml-2 text-center text-sm-left">Upload the pdf formats of the required documents.</p>
+                <p class="mt-md-4 ml-md-0 ml-2 text-center text-sm-left">You will be contacted via your contact e-mail.​</p>
+                
             </div>
-            <!-- /navbar-inner -->
         </div>
-        <!-- /navbar -->
-        <div class="wrapper">
-            <div class="container">
-                <div class="row">
-                    <div class="span3">
-                        <div class="sidebar">
-                            <ul class="widget widget-menu unstyled">
-                                <li class="active"><a href="index.html"><i class="menu-icon icon-dashboard"></i>Anasayfa
-                                </a></li>
-                                <li><a href="activity.html"><i class="menu-icon icon-bullhorn"></i>Gelen Formlar </a>
-                                </li>
-                                <li><a href="message.html"><i class="menu-icon icon-inbox"></i>Mesajlar <b class="label green pull-right">
-                                    11</b> </a></li>
-                                
-                            </ul>
-                            <!--/.widget-nav-->
-                            
-                            <!--/.widget-nav-->
-                            <ul class="widget widget-menu unstyled">                        
-                                <li><a href="{% url 'logout' %}"><i class="menu-icon icon-signout"></i>Logout </a></li>
-                            </ul>
+        <form action=""  method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+        <div class="row justify-content-center round">
+            <div class="col-lg-10 col-md-12 ">
+                <div class="card shadow-lg card-1">
+                    <div class="card-body inner-card">
+                        <div class="row justify-content-center">
+                            <div class="col-lg-5 col-md-6 col-sm-12">
+                                <div class="form-group"><label for="first-name">Name </label>
+                                    <a class="btn btn-large">{{petition.name}}</a>
+                                   </div>
+                                <div class="form-group"> <label for="Mobile-Number">Phone Number </label><a class="btn btn-large">{{petition.phonenumber}}</a></div>
+                                <div class="form-group"> <label for="labelEmail4">Department to apply</label><a class="btn btn-large">{{petition.department}}</a></label></div>
+                            </div>
+                            <div class="col-lg-5 col-md-6 col-sm-12">
+                                <div class="form-group"> <label for="last-name">Surname </label><a class="btn btn-large">{{petition.surname}}</a> </div>
+                                <div class="form-group"> <label for="phone">Email</label><a class="btn btn-large">{{petition.email}}</a> </div>                                
+                            </div>
                         </div>
-                        <!--/.sidebar-->
-                    </div>
-                    <!--/.span3-->
-                    <div class="span9">
-                        <div class="content">
-                            <div class="module message">
-                                <div class="module-head">
-                                    <h3>
-                                        Message</h3>
-                                </div>
-                             
-                                <div class="module-foot">
+                        <div class="row justify-content-center">
+                            <div class="col-md-12 col-lg-10 col-12">
+                                <label class="my-auto">Passport</label><a href="http://127.0.0.1:8000/files/{{petition.passport}}" class="btn btn-large">{{petition.passport}}</a> 
+                            </div>
+                        </div>
+                        <div class="row justify-content-center">
+                            <div class="col-md-12 col-lg-10 col-12">
+                                <label class="my-auto">Graduation document (diploma) </label><a href="http://127.0.0.1:8000/files/{{petition.graduation_document}}" class="btn btn-large">{{petition.graduation_document}}</a>
+                            </div>
+                        </div>
+                        <div class="row justify-content-center">
+                            <div class="col-md-12 col-lg-10 col-12">
+                                <label class="my-auto">Transcript</label> <a href="http://127.0.0.1:8000/files/{{petition.transcript}}" class="btn btn-large">{{petition.transcript}}</a> 
+                            </div>
+                        </div>
+                        <div class="row justify-content-center">
+                            <div class="col-md-12 col-lg-10 col-12">
+                                <label class="my-auto">Language document </label><a href="http://127.0.0.1:8000/files/{{petition.language_document}}" class="btn btn-large">{{petition.language_document}}</a> 
+                            </div>
+                        </div>
+                        <div class="row justify-content-center">
+                            <div class="col-md-12 col-lg-10 col-12">
+                                <div class="form-group"> <label for="exampleFormControlTextarea2">Why do you want to apply to our university?</label><br><a class="btn btn-large">{{petition.description}}</a> <br><br><br><br>
+                                <div class="row justify-content-end mb-5">
+                                    <div class="col-lg-4 col-auto "><button type="submit" class="btn btn-primary btn-block">
+                                       <small class="font-weight-bold">Gönder</small></button> </div>
                                 </div>
                             </div>
                         </div>
-                        <!--/.content-->
                     </div>
-                    <!--/.span9-->
                 </div>
             </div>
-            <!--/.container-->
         </div>
-        <!--/.wrapper-->
-        <div class="footer">
-            <div class="container">
-                <b class="copyright">&copy; 2014 Edmin - EGrappler.com </b>All rights reserved.
-            </div>
-        </div>
-        <script src="scripts/jquery-1.9.1.min.js" type="text/javascript"></script>
-        <script src="scripts/jquery-ui-1.10.1.custom.min.js" type="text/javascript"></script>
-        <script src="bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
-    </body>
-
-
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                
-              
+        </form>
+        
+    </div>
+</div>
+                            </body>
+                        </html>

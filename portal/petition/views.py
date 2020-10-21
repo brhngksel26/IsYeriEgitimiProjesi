@@ -207,7 +207,19 @@ def ogrenci(request):
     return render(request,'ogrenci.html')
 
 def petitionShow(request,id):
-    return render(request,'petition_show.html')
+    petition = ForeignStudentApplicationForm.object.get(id=id)
+
+    status = "Ensitu"
+
+    context = {'petition':petition}
+    
+    if request.method == 'POST':
+        document = ForeignStudentApplicationForm.object.update(
+            status = status,
+        )
+        return redirect('danisman')
+
+    return render(request,'petition_show.html',context)
 
 
 def deneme(request):
