@@ -271,7 +271,7 @@ def control(request,id):
 
     
 
-    mrz = read_mrz(test.graduation_document.path)
+    mrz = read_mrz(test.passport.path)
 
     print(mrz)
 
