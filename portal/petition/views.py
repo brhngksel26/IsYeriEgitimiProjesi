@@ -11,7 +11,9 @@ from .forms import *
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from .models import *
-
+import os
+from passporteye import read_mrz
+import pytesseract
 # Create your views here.
 
 
@@ -204,6 +206,7 @@ def danisman(request):
     return render(request,'danisman.html',{'categoryies':petition})
 
 def ogrenci(request):
+    
     return render(request,'ogrenci.html')
 
 def petitionShow(request,id):
@@ -222,13 +225,7 @@ def petitionShow(request,id):
     return render(request,'petition_show.html',context)
 
 
-def deneme(request):
-    if request.method == 'POST':
-        petition = request.FILES["petition"]
-        cvName = [el['CV'] for el in petition]
-        file = cvName[len(cvName)-1]
-        handle_uploaded_file(file)
-    return render(request,'deneme.html')
+
 
 @login_required(login_url='login')
 def petition(request):
@@ -262,7 +259,33 @@ def petition(request):
             description=description,
         )
         document.save()
+        print(passport)
         return redirect('ogrenci')
     
     
     return render(request,'asd.html')
+
+def control(request,id):
+
+    test = ForeignStudentApplicationForm.object.get(id=id)
+
+    
+
+    mrz = read_mrz(test.graduation_document.path)
+
+    print(mrz)
+
+    mrz_data = mrz.to_dict()
+
+    print('Nationality :' + mrz_data['nationality'])
+    print('Given Name :' + mrz_data['names'])
+    print('Surname :' + mrz_data['surname'])
+    print('Passport type :' + mrz_data['type'])
+    print('Date of birth :' + mrz_data['date_of_birth'])
+    print('ID Number :' + mrz_data['personal_number'])
+    print('Gender :' + mrz_data['sex'])
+    print('Expiration date :' + mrz_data['expiration_date'])
+        
+
+        
+    return render(request,'test.html')

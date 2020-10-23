@@ -3,6 +3,7 @@ from __future__ import unicode_literals
 from io import BytesIO
 from django.http import HttpResponse
 from django.template.loader import get_template
+from passporteye import read_mrz
 
 from xhtml2pdf import pisa
 
@@ -19,50 +20,6 @@ def render_to_pdf(template_src, context_dict={}):
         return HttpResponse(result.getvalue(), content_type='application/pdf')
     return None
 
-def handle_uploaded_file(file):
-    Dir = 'C:/workspace/backend/media/'
-    textDir = 'C:/workspace/backend/media/textResumes/'
-
-    if file.endswith(".pdf"):
-        name = file.split(".")[0]
-        textfilename = name + '.txt'
-        filename = Dir + file
-        doc= convertPDF(filename)
-        f = open(textDir + textfilename, 'w+', encoding="utf-8")
-        for line in doc:
-            f.write(line)
-        f.close()
-
-
-    if file.endswith(".DOCX"):
-        name = file.split(".")[0]
-        textfilename = name + '.txt'
-        filename = Dir +file
-        doc = docx2txt.process(filename)
-        f = open(textDir + textfilename, 'w+', encoding="utf-8")
-        for line in doc:
-            f.write(line)
-        f.close()
-
-    if file.endswith(".docx"):
-        name = file.split(".")[0]
-        textfilename = name + '.txt'
-        filename = Dir +file
-        doc = convertDOCX(filename)
-        f = open(textDir + textfilename, 'w+', encoding="utf-8")
-        for line in doc:
-            f.write(line)
-        f.close()
-
-def convertPDF(fname):
-    with open(fname, 'rb') as f:
-        pdfReader = PyPDF2.PdfFileReader(fname)
-        content = []
-        for i in range(pdfReader.numPages):
-            pageObj = pdfReader.getPage(i)
-            content
-
-    
 
 
 
@@ -122,3 +79,8 @@ def reload_pdf_settings(*args, **kwargs):
 
 
 setting_changed.connect(reload_pdf_settings)
+
+
+def test(*args, **kwargs):
+    module_dir = os.path.dirname(__file__)
+    file_path = os.path.join(module_dir, 'baz.txt')

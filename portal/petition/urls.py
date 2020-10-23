@@ -23,6 +23,7 @@ urlpatterns = [
     path('ogrenci/',views.ogrenci,name="ogrenci"),
     path('petitionshow/<id>',views.petitionShow,name="petitionShow"),
     path('petition/',views.petition,name="petition"),
+    path('deneme/<id>',views.control,name="deneme"),
 
 
 ]
