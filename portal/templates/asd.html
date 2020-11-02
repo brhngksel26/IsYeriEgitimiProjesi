@@ -247,15 +247,20 @@ $(".files2").attr('data-before2',fileName2);
                             <div class="col-lg-5 col-md-6 col-sm-12">
                                 <div class="form-group"><label for="first-name">Name </label><input type="text" class="form-control" name="name" placeholder="Type your Name"> </div>
                                 <div class="form-group"> <label for="Mobile-Number">Phone Number </label> <input type="text" class="form-control" name="phonenumber" placeholder=""> </div>
-                                <div class="form-group"> <label for="inputEmail4">Department to apply</label> <select name="department" class="form-control">
-                                        <option name="department" value="Computer Engineering">Computer Engineering</option>
-                                        <option name="department" value="Biology">Biology</option>
-                                        <option name="department" value="Pyhsics">Pyhsics</option>
+                                <div class="form-group"> <label for="inputEmail4">Department to apply(Phd)</label> <select name="department" class="form-control">
+                                        {% for p in phd %}
+                                        <option name="department" value="{{p.department}}">{{p.department}}</option>
+                                        {% endfor %}
                                     </select> </div>
                             </div>
                             <div class="col-lg-5 col-md-6 col-sm-12">
                                 <div class="form-group"> <label for="last-name">Surname </label> <input type="text" class="form-control" name="surname" placeholder=""> </div>
-                                <div class="form-group"> <label for="phone">Email</label> <input type="email" class="form-control" name="email" placeholder=""> </div>                                
+                                <div class="form-group"> <label for="phone">Email</label> <input type="email" class="form-control" name="email" placeholder=""> </div> 
+                                <div class="form-group"> <label for="inputEmail4">Department to apply(graduate)</label> <select name="department" class="form-control">
+                                    {% for p in graduate %}
+                                    <option name="department" value="{{p.department}}">{{p.department}}</option>
+                                    {% endfor %}
+                                </select> </div>                               
                             </div>
                         </div>
                         <div class="row justify-content-center">

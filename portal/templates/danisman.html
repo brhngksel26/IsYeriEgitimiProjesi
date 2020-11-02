@@ -73,9 +73,9 @@
                             <ul class="widget widget-menu unstyled">
                                 <li class="active"><a href="index.html"><i class="menu-icon icon-dashboard"></i>Anasayfa
                                 </a></li>
-                                <li><a href="activity.html"><i class="menu-icon icon-bullhorn"></i>Gelen Formlar </a>
+                                <li><a href="{% url 'mistakenPetition' %}"><i class="menu-icon icon-bullhorn"></i>Hatalı Formlar </a>
                                 </li>
-                                <li><a href="message.html"><i class="menu-icon icon-inbox"></i>Mesajlar <b class="label green pull-right">
+                                <li><a href="#"><i class="menu-icon icon-inbox"></i>Mesajlar <b class="label green pull-right">
                                     11</b> </a></li>
                                 
                             </ul>
@@ -94,7 +94,7 @@
                             <div class="module message">
                                 <div class="module-head">
                                     <h3>
-                                        Message</h3>
+                                        Dilekçeler</h3>
                                 </div>
                                 <div class="module-option clearfix">
                                     <div class="pull-left">
@@ -117,52 +117,59 @@
                                     <div class="pull-right">
                                         <a href="#" class="btn btn-primary">Compose</a>
                                     </div>
-                                </div>
-                                <div class="module-body table">
-                                    <table class="table table-message">
-                                        <tbody>
-                                            
-                                            <tr class="heading">
-                                                
-                                                <td class="cell-author hidden-phone hidden-tablet">
-                                                    User
-                                                </td>
-                                                <td class="cell-author hidden-phone hidden-tablet">
-                                                    email
-                                                </td>
-                                                <td class="cell-author hidden-phone hidden-tablet">
-                                                    department
-                                                </td>
-                                                <td class="cell-author hidden-phone hidden-tablet">
-                                                    Statu
-                                                </td>
-                                                <td class="cell-author hidden-phone hidden-tablet">
+                                    <form action=""  method="POST">
+                                        {% csrf_token %}
+                                        <div class="module-body table">
+                                            <table class="table table-message">
+                                                <tbody>
                                                     
-                                                </td>
-                                            </tr>
-                                            {% for category in categoryies %}
-                                            <tr class="unread" >
-                                                
-                                                <td class="cell-author hidden-phone hidden-tablet">
-                                                    {{category.user}}
-                                                </td>
-                                                <td class="cell-author hidden-phone hidden-tablet">
-                                                    {{category.email}}
-                                                </td>
-                                                <td class="cell-icon hidden-phone hidden-tablet">
-                                                    {{category.department}}
-                                                </td>
-                                                <td class="cell-author hidden-phone hidden-tablet">
-                                                    {{category.status}}
-                                                </td>
-                                                <td class="cell-author hidden-phone hidden-tablet" >
-                                                    <a class="btn btn-warning" href="{% url 'petitionShow' category.id %}" role="button"></a>
-                                                </td>
-                                            </tr>
-                                            {% endfor %}
-                                        </tbody>
-                                    </table>
+                                                    <tr class="heading">
+                                                        
+                                                        <td class="cell-author hidden-phone hidden-tablet">
+                                                            User
+                                                        </td>
+                                                        <td class="cell-author hidden-phone hidden-tablet">
+                                                            email
+                                                        </td>
+                                                        <td class="cell-author hidden-phone hidden-tablet">
+                                                            department
+                                                        </td>
+                                                        <td class="cell-author hidden-phone hidden-tablet">
+                                                            Statu
+                                                        </td>
+                                                        <td class="cell-author hidden-phone hidden-tablet">
+                                                            
+                                                        </td>
+                                                    </tr>
+                                                    {% for category in categoryies %}
+                                                    <tr class="unread" >
+                                                        
+                                                        <td class="cell-author hidden-phone hidden-tablet">
+                                                            {{category.user}}
+                                                        </td>
+                                                        <td class="cell-author hidden-phone hidden-tablet">
+                                                            {{category.email}}
+                                                        </td>
+                                                        <td class="cell-icon hidden-phone hidden-tablet">
+                                                            {{category.department}}
+                                                        </td>
+                                                        <td class="cell-author hidden-phone hidden-tablet">
+                                                            {{category.status}}
+                                                        </td>
+                                                        <td class="cell-author hidden-phone hidden-tablet" >
+                                                            <a class="btn btn-warning" href="{% url 'petitionShow' category.id %}" role="button"></a>
+                                                        </td>
+                                                    </tr>
+                                                    {% endfor %}
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <div class="col-lg-4 col-auto ">
+                                            <button type="submit" class="btn btn-primary btn-block"><small class="font-weight-bold">Kontrol Et</small></button>
+                                        </div>
+                                    </form>
                                 </div>
+                                
                                 <div class="module-foot">
                                 </div>
                             </div>

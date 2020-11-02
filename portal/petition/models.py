@@ -42,6 +42,7 @@ class Petition(models.Model):
 class ForeignStudentApplicationForm(models.Model):
     STATUS = (
         ('Process','İşlem Sırasında'),
+        ('Mistaken','Hatalı'),
         ('Ensitu','Ensitu İncelemesinde'),
         ('Department','Departman İncelemesinde'),
         ('EnsituDirector','Ensitu Direktörünün İncelemesinde'),
@@ -66,3 +67,21 @@ class ForeignStudentApplicationForm(models.Model):
 
     def __str__(self):
         return self.email
+
+class Department(models.Model):
+    
+    INSTITUTES = (
+        ('Graduate','Yüksek Lisans'),
+        ('PhD','Doktara'),
+        
+    )
+
+    department = models.CharField(max_length=100)
+    institutes = models.CharField(max_length=100,choices=INSTITUTES)
+
+
+    object = models.Manager()
+
+
+    def __str__(self):
+        return self.department

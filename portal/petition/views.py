@@ -18,113 +18,14 @@ import pytesseract
 
 
 
-class DownlandPDF(View):
-    def get(self, request, *args, **kwargs):
-        template = get_template('asd.html')
-        context = {
-            "Adı Soyadı" : "Burhan",
-            "Doğum Tarihi" : "2020-10-09",
-            "Cinsiyet" : "ERKEK",
-            "E-Posta Adresi ": "email@info.com",
-            "Telefon" : "5342433147",
-            "Mezuniyet Durumu" : "Lise",
-            "İngilizce Seviyeniz" : "İleri Seviye",
-            "Çalışmak İstediğiniz Pozisyon" : "Bilgi İşlem",
-            "Askerlik Durumu"	: "Muaf",
-            "Ek Bilgi" : "asdasdasd",
-        }
-        html = template.render(context)
-        pdf = render_to_pdf('asd.html', context)
-        if pdf:
-            response = HttpResponse(pdf, content_type='application/pdf')
-            filename = "test_%s.pdf" %("12341231")
-            content = "inline; filename=%s" %(filename)
-            download = request.GET.get("download")
-            if download:
-                content = "attachment; filename=%s" %(filename)
-            response['Content-Disposition'] = content
-            return response
-        return HttpResponse(html)
-
-
-class GeneratePdf(View):
-    def get(self, request, *args, **kwargs):
-        data = {
-             'today': "11.03.1998", 
-             'amount': 39.99,
-            'customer_name': 'Cooper Mann',
-            'order_id': 1233434,
-        }
-        pdf = render_to_pdf('asd.html', data)
-        return HttpResponse(pdf, content_type='application/pdf')    
-
-class GetPDF(View):
-    def get(self, request, *args, **kwargs):
-        template = get_template('asd.html')
-        context={}
-        html = template.render(context)
-        pdf = render_to_pdf('control.html', context)
-        if request.method == "POST":
-            template = get_template('control.html')
-            context = {"Adı Soyadı" : "Burhan",
-            "Doğum Tarihi" : "2020-10-09",
-            "Cinsiyet" : "ERKEK",
-            "E-Posta Adresi ": "email@info.com",
-            "Telefon" : "5342433147",
-            "Mezuniyet Durumu" : "Lise",
-            "İngilizce Seviyeniz" : "İleri Seviye",
-            "Çalışmak İstediğiniz Pozisyon" : "Bilgi İşlem",
-            "Askerlik Durumu"	: "Muaf",
-            "Ek Bilgi" : "asdasdasd",}
-            html = template.render(context)
-            pdf = render_to_pdf('asd.html', context)
-            if pdf:
-                response = HttpResponse(pdf, content_type='application/pdf')
-                filename = "test_%s.pdf" %("12341231")
-                content = "inline; filename='%s'" %(filename)
-                download = request.GET.get("download")
-                if download:
-                    content = "attachment; filename='%s'" %(filename)
-                response['Content-Disposition'] = content
-                return response
-            return HttpResponse(html)
-        return HttpResponse(pdf, content_type='application/pdf')
-
-
-def index(request):
-    return render(request,"test.html")
-
-def test(request):
-    #return render(request,"control.html")
-    context = {}
-    name = request.POST.get('name', None)
-    birthday = request.POST.get('birthday', None)
-    gender = request.POST.get('gender', None)
-    email = request.POST.get('email', None)
-    phonenumber = request.POST.get('phonenumber', None)
-    graduation = request.POST.get('graduation', None)
-    language_level = request.POST.get('language_level', None)
-    position = request.POST.get('position', None)
-    military_status = request.POST.get('military_status', None)
-    description = request.POST.get('description', None)
-    context['name'] = name
-    context['birthday'] = birthday
-    context['gender'] = gender
-    context['email'] = email
-    context['phonenumber'] = phonenumber
-    context['graduation'] = graduation
-    context['language_level'] = language_level
-    context['position'] = position
-    context['military_status'] = military_status
-    context['description'] = description
-    return render(request,'control.html',context)
-
-
-
-
 @admin_only
+def index(request):
+    return render(request,"index.html")
+
+
 def dashboard(request):
     return render(request,"index.html")
+
 
 @unauthenticated_user
 def loginPage(request):
@@ -137,7 +38,7 @@ def loginPage(request):
             user = authenticate(request, username=username, password=password)
             if user is not None:
                 login(request,user)
-                return redirect('dashboard')
+                return redirect('index')
             else:
                 messages.info(request,'Kullanıcı Adı veya Şifre yanlış')
         return render(request,"login.html")
@@ -161,35 +62,7 @@ def logoutUser(request):
     return redirect('index')
 
 
-@login_required(login_url='login')
-@allowed_users(allowed_roles=['ogrenci'])
-def uploadfile(request):
-    ogrenci = request.user.student
 
-    print(ogrenci)
-    #,instance=ogrenci
-    form = FileForm()
-
-    if request.method == 'POST' :
-        title = request.POST["title"]
-        description = request.POST["description"]
-        petition = request.FILES["petition"]
-        finished = request.POST["finished"]
-        document = Petition.object.create(
-            user=ogrenci,
-            title=title,
-            description=description,  
-            petition=petition,
-            finished=finished,
-        )
-        document.save()
-        return HttpResponse("Dosya eklendi")
-        """form = FileForm(request.POST, request.FILES,instance=request.user.student)
-        if form.is_valid():
-            form.save()"""
-
-    context={'form':form}
-    return render(request,'fileupload.html',context)
 
 def ensitumudur(request):
     return render(request,'ensitumudur.html')
@@ -203,6 +76,28 @@ def ensitu(request):
 def danisman(request):
     status = "Process"
     petition = ForeignStudentApplicationForm.object.filter(status=status)
+
+    if request.method == "POST":
+        id = ForeignStudentApplicationForm.object.filter(status=status).values('id')
+
+        i = 0
+        id_list = []
+        for i in range(len(petition)):
+            petition_id = str(id[i])
+            petition_id = petition_id.replace("{'id': ","")
+            petition_id = petition_id.replace("}","")
+            id_list.append(petition_id)
+        
+        for i in range(len(id_list)):
+            control = passport_control_api(id_list[i])
+            if control == "Pasaport kriterlere uygun değil":
+                status = "Mistaken"
+                ForeignStudentApplicationForm.object.filter(id=id_list[i]).update(status=status)
+                print(control,id_list[i])
+
+        
+    
+
     return render(request,'danisman.html',{'categoryies':petition})
 
 def ogrenci(request):
@@ -217,12 +112,20 @@ def petitionShow(request,id):
     context = {'petition':petition}
     
     if request.method == 'POST':
-        document = ForeignStudentApplicationForm.object.update(
-            status = status,
-        )
+        ForeignStudentApplicationForm.object.filter(id=id).update(status=status)
         return redirect('danisman')
 
     return render(request,'petition_show.html',context)
+
+def mistakenPetition(request):
+    status = "Process"
+    petition = ForeignStudentApplicationForm.object.filter(status=status)
+    print("sadasd",petition)
+
+    context = {'petition':petition}
+
+    return render(request,'mistaken.html',context)
+
 
 
 
@@ -231,8 +134,14 @@ def petitionShow(request,id):
 def petition(request):
     ogrenci = request.user.student
 
-    print(ogrenci)
-    #,instance=ogrenci
+    phd_status = "PhD"
+    phd = Department.object.filter(institutes=phd_status)
+
+    graduate_status = "Graduate"
+    graduate = Department.object.filter(institutes=graduate_status)
+
+    print(phd)
+
 
     if request.method == 'POST' :
         name = request.POST["name"]
@@ -245,6 +154,7 @@ def petition(request):
         transcript = request.FILES["transcript"]
         language_document = request.FILES["language_document"]
         description = request.POST["description"]
+
         document = ForeignStudentApplicationForm.object.create(
             user=ogrenci,
             name=name,
@@ -262,30 +172,13 @@ def petition(request):
         print(passport)
         return redirect('ogrenci')
     
+    context = {'phd':phd,'graduate':graduate}
     
-    return render(request,'asd.html')
+    return render(request,'asd.html',context)
 
 def control(request,id):
 
-    test = ForeignStudentApplicationForm.object.get(id=id)
-
-    
-
-    mrz = read_mrz(test.passport.path)
-
-    print(mrz)
-
-    mrz_data = mrz.to_dict()
-
-    print('Nationality :' + mrz_data['nationality'])
-    print('Given Name :' + mrz_data['names'])
-    print('Surname :' + mrz_data['surname'])
-    print('Passport type :' + mrz_data['type'])
-    print('Date of birth :' + mrz_data['date_of_birth'])
-    print('ID Number :' + mrz_data['personal_number'])
-    print('Gender :' + mrz_data['sex'])
-    print('Expiration date :' + mrz_data['expiration_date'])
+    passport_control_api(id)
         
+    return render(request,'anabilim.html')
 
-        
-    return render(request,'test.html')
