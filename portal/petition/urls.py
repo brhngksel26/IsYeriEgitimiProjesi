@@ -19,6 +19,7 @@ urlpatterns = [
     path('petition/',views.petition,name="petition"),
     path('deneme/<id>',views.control,name="deneme"),
     path('mistakenpetition/',views.mistakenPetition,name="mistakenPetition"),
+    path('mistakenStudentpetition/',views.mistakenStudentPetition,name="mistakenStudentpetition"),
 
 
 ]

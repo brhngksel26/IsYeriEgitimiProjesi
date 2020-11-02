@@ -59,7 +59,7 @@ def registerPage(request):
 
 def logoutUser(request):
     logout(request)
-    return redirect('index')
+    return redirect('dashboard')
 
 
 
@@ -118,13 +118,26 @@ def petitionShow(request,id):
     return render(request,'petition_show.html',context)
 
 def mistakenPetition(request):
-    status = "Process"
+    status = "Mistaken"
     petition = ForeignStudentApplicationForm.object.filter(status=status)
     print("sadasd",petition)
 
     context = {'petition':petition}
 
     return render(request,'mistaken.html',context)
+
+
+@login_required(login_url='login')
+def mistakenStudentPetition(request):
+    status = "Mistaken"
+    id = request.user.student
+    petition = ForeignStudentApplicationForm.object.filter(user=id,status=status)
+    print("sadasd",id)
+
+    context = {'petition':petition}
+
+    return render(request,'mistaken.html',context)
+
 
 
 
