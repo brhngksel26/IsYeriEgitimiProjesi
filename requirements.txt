@@ -166,7 +166,6 @@ pytest-openfiles==0.4.0
 pytest-remotedata==0.3.2
 python-dateutil==2.6.1
 python-jsonrpc-server==0.3.4
-python-language-server==0.31.7
 pywin32==227
 pywin32-ctypes==0.2.0
 pywinpty==0.5.7
