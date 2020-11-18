@@ -11,9 +11,7 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 
 import os
-import django_heroku
-import dotenv
-import dj_database_url
+
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -22,7 +20,6 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
-django_heroku.settings(locals())
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = '$=t4v*f2ltrx$+@f1nci^4(lfp9w2548k+ti)0$!%#j12o19_g'
@@ -82,23 +79,20 @@ WSGI_APPLICATION = 'portal.wsgi.application'
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-# load environment variables from .env
-dotenv_file = os.path.join(BASE_DIR, ".env")
-if os.path.isfile(dotenv_file):
-    dotenv.load_dotenv(dotenv_file)
 
-# load database from the DATABASE_URL environment variable
-DATABASES = {}
-DATABASES['default'] = dj_database_url.config(conn_max_age=600)
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'portal',
+        'USER': 'postgres',
+        'PASSWORD':'nbvcxz26',
+        'HOST':'localhost',
+        'PORT':'5432'
+
     }
 }
 
-DATABASE_URL=sqlite:///db.sqlite3
 
 
 # Password validation
