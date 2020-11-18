@@ -29,8 +29,6 @@ chardet==3.0.4
 Click==7.0
 contextlib2==0.6.0.post1
 cryptography==2.8
-cycler==0.10.0
-Cython @ file:///D:/bld/cython_1602367529523/work
 cytoolz==0.10.1
 dask==2.11.0
 decorator==4.4.1
