@@ -1,4 +1,5 @@
 alabaster==0.7.12
+whitenoise==5.0.1
 apache-libcloud==3.2.0
 argh==0.26.2
 asgiref==3.2.7
@@ -36,6 +37,7 @@ defusedxml==0.6.0
 diff-match-patch==20181111
 distributed==2.11.0
 Django==3.0.8
+django-storages==1.8
 django-filter==2.2.0
 django-replace==2019.4.13
 djangorestframework==3.11.0
@@ -169,6 +171,7 @@ python-jsonrpc-server==0.3.4
 pywin32-ctypes==0.2.0
 pywinpty==0.5.7
 PyYAML==5.3
+pytz=2019.3
 pyzmq==18.1.1
 QDarkStyle==2.8
 QtAwesome==0.6.1
