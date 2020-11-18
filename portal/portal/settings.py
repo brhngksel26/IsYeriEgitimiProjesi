@@ -28,7 +28,7 @@ SECRET_KEY = '$=t4v*f2ltrx$+@f1nci^4(lfp9w2548k+ti)0$!%#j12o19_g'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['firatportal.herokuapp.com','127.0.0.1']
 
 
 # Application definition
