@@ -1,1 +1,1 @@
-# -sYeriEgitimiProjesi
+# IsYeriEgitimiProjesi
